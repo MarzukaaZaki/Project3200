@@ -1,0 +1,38 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div style="padding: 70px;"">
+    <img src="{% static 'images/donor.jpg' %}" alt="donating-blood">
+    <h1> Join thousands of Donors</h1>
+    <p>
+    Every drop counts. Give blood today! 
+    </p>
+    <button> <a href="{% url 'donor_register' %}">Become a donor</a></button>
+    Already a donor? <a href="{% url 'donor_login' %}">Log In</a>
+</div>
+
+<br>
+<div style="padding: 70px;">
+    <img src="{% static 'images/patient.jpg' %}" alt="receiving-blood">
+    <h1> Need Blood?</h1>
+    <p>
+    Join our community of patients to avail safe blood on time. 
+    </p>
+    <button><a href="{% url 'patient_register' %}">Join as a patient</a></button>
+    Already have an account? <a href="{% url 'patient_login' %}">Log In</a>
+</div>
+<br>
+<div style="padding: 70px;">
+    <img src="{% static 'images/receptionist.jpg' %}" alt="help-desk">
+    <h1> Want to help us out? </h1>
+    <p>
+    Become a receptionist and help us in building a community. 
+    </p>
+    <button><a href="{% url 'employee_register' %}">Join as a receptionist</a></button>
+    Already a member? <a href="{% url 'employee_login' %}">Log In</a>
+</div>
+
+
+
+
+{% endblock content %}

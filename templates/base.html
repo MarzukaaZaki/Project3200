@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blood Bank </title>
+    
+        <!-- External CSS -->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+     
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+        
+        <!-- Internal CSS -->
+        <style>
+            
+            .banner-image{
+                background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.6)),url('{% static '/images/blood_donor.jpg' %}');
+                height: 80%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                margin: 0px; 
+                padding: 140px;
+            }
+            .banner-text{
+                color: white; 
+                text-align:button;
+                
+            }
+            .banner-text h1{
+                padding: 10px;
+                padding-bottom: 5px;
+                font-size: 47px;
+            }
+            .banner-text p{
+                padding-left: 10px;
+                font-size: 19px;    
+            }
+            .banner-text h1,p{
+                text-align:left;
+            }
+            .banner-text button{
+                background-color: transparent;
+                border: 3px solid white;
+                border-radius: 6px;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 12px;
+                margin:17px;
+                transition-duration: 0.4s;
+                width: 17%;
+                
+            }
+            .banner-text button:hover{
+                
+                background-color: white;
+                color: #3434ad;
+
+            }
+            
+}
+            
+        </style>
+
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    </head>
+    <body>
+        <header>
+            <nav class = "navbar">
+                <ul>
+                    <li><a href="#">Our Mission</a> </li>
+                    <li><a href="#">Why Donate Blood?</a></li>
+                    <li><a href="#">Register/Log In</a></li>
+                    <li><a href="#">Get Help</a></li>
+                    <div class ="search-box">
+                        <form action="#"  >
+                            <input type="text" name="search" id="search" placeholder="Search...">
+
+                        </form>
+
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <!-- Banner Image -->
+        <div class="banner-image" >
+            <div class ="banner-text">
+                {% if user.is_authenticated %}
+                    <h3>Hello, {{user.first_name}}</h3>
+                    <a href="{% url 'donor_logout' %}"><button>Log out</button></a>
+                {% else %}
+                <h1>Donate Blood. Save Lives.</h1>
+                <p>A blood bag in time saves a life.</p>
+                <a href="{% url 'register' %}"><button>Sign Up</button></a>
+                <a href="{% url 'donor_login' %}"><button>Log in</button></a>
+                {% endif %}
+                
+            </div>
+        </div>
+        {% block content %}
+        {% endblock content %}
+        
+    </body>
+</html>

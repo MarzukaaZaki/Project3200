@@ -1,0 +1,33 @@
+
+img{
+    height: 300px;
+    width: 450px;
+    float: right;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.3);
+}
+h1{
+    color: gray;
+}
+p{
+    padding-top: 20px;
+    
+}
+button{
+    background-color: transparent;
+    border: 3px solid #3434ad;
+    border-radius: 6px;
+    color: #3434ad;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    margin:17px;
+    transition-duration: 0.4s;
+    width: 17%;
+}
+button:hover{
+    background-color: #3434ad;
+    color: white;
+}
+a{
+    text-decoration: none;
+}

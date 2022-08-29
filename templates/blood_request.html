@@ -1,0 +1,60 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link rel=”stylesheet” href=”//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css”>
+<script src=”//code.jquery.com/jquery-1.12.4.js”></script>
+<script src=”//code.jquery.com/ui/1.12.1/jquery-ui.js”></script>
+
+<!-- Datepicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+{% endblock css %}
+
+{% block content %}
+
+<div class="appointment-form-container">
+   
+    {% if first_name %}
+
+     <h2>
+        Thank you, {{first_name}}. 
+     </h2>   
+    <p>We mailed you the details regarding your request.</p>
+    {% else %}
+    <h2>Blood Request Form</h2>
+    <div class="appointment-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+     
+            <input type="text" id="fname" name="firstname" placeholder="First Name">
+          
+            <input type="text" id="lname" name="lastname" placeholder="Last Name">
+            <br>
+            <input type="email" id="email" name="email" placeholder="Email">
+            <br>
+            <input type="text" id="bloodgroup" name="bloodgroup" placeholder="Your Blood Group">
+            <br>
+            <input type="text" id ="quantity" name="quantity" placeholder = "No. of bags">
+            <br>
+            <input type="text" id="date" name="date" placeholder="Needed within">
+           
+
+          
+          
+            <input type="submit" value="Submit">
+          </form>
+    
+    
+    </div>
+    {% endif %}
+</div>
+{% block script %}
+
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock script %}
+
+
+{% endblock content %}

@@ -1,0 +1,8 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% if percent >= 70.00 %}
+<h3> You are eligible to donate blood.</h3>
+{% else %}
+<h3>You are not eligible to donate blood.</h3>
+{% endif %}
+{% endblock content %}

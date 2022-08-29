@@ -1,0 +1,15 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div style="margin: 80px;">
+    <h1>Log In to your Donor Account</h1>
+    <hr><br>
+    <form action="{% url 'donor_login' %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <button type="submit"> Log In </button>
+    </form>
+</div>
+{% endblock content %}

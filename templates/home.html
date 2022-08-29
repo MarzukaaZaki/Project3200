@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+</div>
+<div style="padding: 50px;">
+    <div class="row">
+        <div class="column">
+            <div class="card">
+            <img src="{% static '/images/blood_donation.png' %}" alt="donating-blood" style=" height: 200px;
+            width: 270px;">
+            <h3>Am I Eligible to donate blood</h3>
+            <a href="{% url 'eligibility_quiz'%}"><button>FIND OUT</button></a>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="{% static '/images/camp.jpg' %}" alt="donating-blood" style=" height: 200px;
+            width: 270px;">
+            <h3>Blood donation camps near me</h3>
+            <a href="#"><button>FIND OUT</button></a>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="{% static '/images/save.jpeg' %}" alt="donating-blood" style=" height: 200px;
+            width: 270px;">
+            <h3>Save a life</h3>
+            <a href="#"><button>LEARN MORE</button></a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+{% endblock content %}
+        

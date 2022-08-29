@@ -1,0 +1,30 @@
+{% extends 'navbar.html' %}
+
+
+{% block content %}
+
+<h1> Please answer the following questions to see whether you're eligible to donate blood.</h1>
+    <form method="POST" action="{% url 'eligibility_quiz' %}">
+        {% csrf_token %}
+        <div class="quiz-container">
+                {% for q in questions %}
+                <h2>{{q.question}}</h2>
+                <input type="radio" id = "{{q.option1}}" name="{{q.question}}" value="{{q.option1}}">
+                <label for="{{q.option1}}">{{q.option1}}</label><br>
+                <input type="radio" id = "{{q.option2}}" name="{{q.question}}" value="{{q.option2}}">
+                <label for="{{q.option2}}">{{q.option2}}</label><br>
+                <input type="radio" id = "{{q.option3}}" name="{{q.question}}" value="{{q.option3}}">
+                <label for="{{q.option3}}">{{q.option3}}</label><br>
+                <input type="radio" id = "{{q.option4}}" name="{{q.question}}" value="{{q.option4}}">
+                <label for="{{q.option4}}">{{q.option4}}</label>
+                {% endfor %}
+                <br>
+                <button type="submit"> Submit </button>
+        </div>
+        
+
+    </form>
+
+{% endblock content %}
+
+    

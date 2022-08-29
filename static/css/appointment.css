@@ -1,0 +1,47 @@
+/* Style inputs */
+.appointment-form-container{
+    padding: 77px;
+    margin-left: 85px;
+    color: #3434ad;
+}
+.appointment-form{
+    
+    width: 33%;
+}
+input[type=text],select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+input[type=email],select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  
+  /* Style the submit button */
+  input[type=submit] {
+    width: 100%;
+    background-color: white;
+    color: #3434ad;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 3px #3434ad solid;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Add a background color to the submit button on mouse-over */
+  input[type=submit]:hover {
+    background-color: #3434ad;
+    color: white;
+  }
