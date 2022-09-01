@@ -61,7 +61,7 @@ def blood_request(request):
             first_name+last_name, # Subject
             'I need '+ quantity + ' of ' + blood_group+' blood within '+date_of_appointment, # Body of email
             email, # Sender
-            ['zakimarzuka@gmail.com'] # Receipient
+            ['marzuukadrc58@gmail.com'] # Receipient
             )
         return render(request, 'blood_request.html',{'first_name':first_name})
     else:

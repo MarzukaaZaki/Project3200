@@ -1,0 +1,21 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div style="text-align:center; padding:40px">
+    <h2>Search Results </h2>
+    <hr>
+</div>
+
+<div style="padding-left: 30px; padding-top: 12px;">
+    {% if object_list %}
+    <ol>
+     {% for camp in object_list %}
+        <li>{{camp.camp_name}}, {{camp.camp_location}}</li>
+    {% endfor %}
+    </ol>
+    {% else %}
+    <p> No relevant searches.</p>
+    {% endif %}
+    
+</div>
+
+{% endblock content %}

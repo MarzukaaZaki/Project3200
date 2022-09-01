@@ -80,10 +80,14 @@
                 <ul>
                     <li><a href="#">Our Mission</a> </li>
                     <li><a href="#">Why Donate Blood?</a></li>
-                    <li><a href="#">Register/Log In</a></li>
-                    <li><a href="#">Get Help</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    {%else%}
+                    <li><a href="{% url 'register' %}">Register/Log In</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'blood_banks' %}">Get Help</a></li>
                     <div class ="search-box">
-                        <form action="#"  >
+                        <form action="{% url 'find_camp' %}" method="GET" >
                             <input type="text" name="search" id="search" placeholder="Search...">
 
                         </form>
@@ -96,8 +100,13 @@
         <div class="banner-image" >
             <div class ="banner-text">
                 {% if user.is_authenticated %}
-                    <h3>Hello, {{user.first_name}}</h3>
-                    <a href="{% url 'donor_logout' %}"><button>Log out</button></a>
+                    <h3><b>Welcome, {{user.first_name}}!</b></h3>
+                    {% if user.is_donor %}
+                    <a href="{% url 'appointment' %}"><button>Book an Appointment</button></a>
+                    {% else %}
+                    <a href="{% url 'blood_request' %}"><button>Request for Blood</button></a>
+                    {% endif %}
+                    <a href="{% url 'donor_logout' %}"><button>Log out from this Account</button></a>
                 {% else %}
                 <h1>Donate Blood. Save Lives.</h1>
                 <p>A blood bag in time saves a life.</p>

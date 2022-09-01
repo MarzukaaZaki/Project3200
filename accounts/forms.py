@@ -21,8 +21,8 @@ class DonorSignUpForm(UserCreationForm):
 
     # As soon as the form is submitted, the data entered is sent to the database in one transaction.
     @transaction.atomic
-    def save(self):
-        custom_user = super().save(commit=False)
+    def save(self, *args,**kwargs):
+        custom_user = super().save(*args,**kwargs,commit=False)
         custom_user.is_donor = True
         custom_user.first_name = self.cleaned_data.get('first_name')
         custom_user.last_name = self.cleaned_data.get('last_name')
@@ -59,8 +59,8 @@ class PatientSignUpForm(UserCreationForm):
 
     # As soon as the form is submitted, the data entered is sent to the database in one transaction.
     @transaction.atomic
-    def save(self):
-        custom_user = super().save(commit=False)
+    def save(self,*args,**kwargs,):
+        custom_user = super().save(*args,**kwargs, commit=False)
         custom_user.is_patient = True
         custom_user.first_name = self.cleaned_data.get('first_name')
         custom_user.last_name = self.cleaned_data.get('last_name')
@@ -97,8 +97,8 @@ class EmployeeSignUpForm(UserCreationForm):
 
     # As soon as the form is submitted, the data entered is sent to the database in one transaction.
     @transaction.atomic
-    def save(self):
-        custom_user = super().save(commit=False)
+    def save(self,*args,**kwargs,):
+        custom_user = super().save(*args,**kwargs,commit=False)
         custom_user.is_patient = True
         custom_user.first_name = self.cleaned_data.get('first_name')
         custom_user.last_name = self.cleaned_data.get('last_name')
@@ -118,16 +118,15 @@ class EmployeeLoginForm(forms.Form):
     password = forms.CharField(max_length=15, widget=forms.PasswordInput)
 
 
-# Profile Information Update Form
+
 class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    
     class Meta:
         model = CustomUser
-        fields = ['username', 'email']
+        fields = ['username','email']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio','profile_pic']
-
-
-
+        fields = ['image']

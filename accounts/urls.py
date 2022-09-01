@@ -19,6 +19,7 @@ urlpatterns = [
     path('employee_login', EmployeeLoginView.as_view() , name='employee_login'),
     path('employee_logout', employee_logout , name='employee_logout'),
 
-    path('profile',profile,name='profile')
+    path('profile',profile,name = 'profile'),
+   
 
 ]

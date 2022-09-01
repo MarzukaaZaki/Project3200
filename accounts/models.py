@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from blood.models import Blood
+from PIL import Image
 
 class CustomUser(AbstractUser):
     # Common fields for all types of users
@@ -31,11 +32,18 @@ class Patient(models.Model):
     patient_location = models.CharField(max_length=20)
     def __str__(self):
         return f'{self.custom_user.first_name}'
-# Create your models here.
+
 class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='Profile')
-    bio = models.CharField(max_length=160)
-    profile_pic = models.ImageField(default='default.png', upload_to = 'profile_pics')
-    
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name ='profile')
+    image = models.ImageField(default = 'default.png', upload_to='profile_pics')
     def __str__(self):
         return f'{self.user.username} Profile'
+    
+    def save(self):
+        super().save()
+        img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
